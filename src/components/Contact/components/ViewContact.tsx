@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getContact, getGroup } from "../../../services/contactService";
 import { Contact, Group } from "../contact.type";
 
-type ViewContactProps = {
+export type ViewContactProps = {
   contact: Contact;
   group: Group;
 };

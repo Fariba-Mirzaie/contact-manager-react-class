@@ -32,7 +32,10 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/contact/add" element={<AddContact groups={groups} />} />
         <Route path="/contact/view/:id" element={<ViewContact />} />
-        <Route path="/contact/edit/:id" element={<EditContact />} />
+        <Route
+          path="/contact/edit/:id"
+          element={<EditContact groups={groups} />}
+        />
       </Routes>
     </div>
   );

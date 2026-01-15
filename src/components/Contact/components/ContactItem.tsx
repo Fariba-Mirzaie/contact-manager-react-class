@@ -30,10 +30,12 @@ export default function ContactItem({ contact }: { contact: Contact }) {
       </div>
       <div className="buttons">
         <Link to={`/contact/view/${contact.id}`}>
-          <button className="btn">view</button>
+          <button className="btn">مشاهده</button>
         </Link>
-        <button className="btn">del</button>
-        <button className="btn">edit</button>
+        <Link to={`/contact/edit/${contact.id}`}>
+          <button className="btn">ویرایش</button>
+        </Link>
+        <button className="btn">حذف</button>
       </div>
     </div>
   );
