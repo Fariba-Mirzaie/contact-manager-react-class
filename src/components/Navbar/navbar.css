@@ -1,0 +1,42 @@
+.navbar {
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.navbar > div.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar > div.logo img {
+  transition: all 300ms;
+}
+.navbar span {
+  font-weight: 700;
+  color: darkblue;
+}
+
+.navbar > div {
+  flex: 1;
+}
+.search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.main {
+  position: fixed;
+  width: 100%;
+  height: 77px;
+  left: 0;
+  top: 0;
+  transition: height 300ms, background 200ms;
+}
+
+.fixed-header {
+  background-color: gray;
+  height: 67px;
+}

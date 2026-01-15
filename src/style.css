@@ -1,0 +1,24 @@
+body {
+  direction: rtl;
+}
+:root {
+  --background: rgb(218, 218, 218);
+}
+.app {
+  max-width: 1440px;
+  min-height: 100vh;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 100px 10px 10px;
+}
+.separator {
+  height: 1px;
+  background-color: #aaa;
+  margin-top: 10px;
+}
+
+input[type="text"] {
+  padding: 5px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}

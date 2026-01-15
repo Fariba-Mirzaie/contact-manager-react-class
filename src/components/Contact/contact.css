@@ -1,0 +1,64 @@
+.ContactItem {
+  display: flex;
+  width: 450px;
+  height: 200px;
+  gap: 20px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: lightgray;
+  align-items: center;
+}
+
+.ContactItem .buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.contact-info {
+  flex: 1;
+  border: 1px solid #eee;
+  padding: 10px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* contacts */
+.contacts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 32px;
+  background-color: antiquewhite;
+  margin-top: 5px;
+}
+.title {
+  color: #0000db;
+}
+
+/* add-form */
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+  border: 1px solid gray;
+  padding: 10px;
+}
+.add-form .buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
