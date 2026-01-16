@@ -1,0 +1,24 @@
+.main-section {
+  display: flex;
+  gap: 20px;
+}
+
+.main-section > div {
+  width: 100px;
+  border: 1px solid gray;
+  text-align: center;
+}
+
+.main-section .title {
+  background-color: red;
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+.fixed-menu {
+  height: 150px;
+  position: sticky;
+  left: 0;
+  top: 0;
+}

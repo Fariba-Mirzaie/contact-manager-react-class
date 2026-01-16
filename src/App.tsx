@@ -6,10 +6,11 @@ import {
   ViewContact,
 } from "./components";
 import { useEffect, useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Link, Navigate, Route, Routes } from "react-router-dom";
 import { getAllGroups } from "./services/contactService";
 import "./App.css";
 import { Group } from "./components/Contact/contact.type";
+import SidebarExam from "./components/sidebar/SidebarExam";
 
 function App() {
   const [groups, setGroups] = useState<Group[]>([]);
@@ -26,7 +27,8 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar searchText={searchText} setSearchText={setSearchText} />
+      <Link to="/sidebar" />
+      {/* <Navbar searchText={searchText} setSearchText={setSearchText} /> */}
 
       <Routes>
         <Route path="/" element={<Navigate to="/contacts" />} />
@@ -40,6 +42,7 @@ function App() {
           path="/contact/edit/:id"
           element={<EditContact groups={groups} />}
         />
+        <Route path="/sidebar" element={<SidebarExam />} />
       </Routes>
     </div>
   );
