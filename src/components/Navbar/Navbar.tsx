@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { SearchContact, Separator } from "../../components";
 import "./navbar.css";
 import { useEffect, useState } from "react";
 
-export default function Navbar() {
+export type SearchProps = {
+  searchText: string;
+  setSearchText: (text: string) => void;
+};
+
+export default function Navbar({ searchText, setSearchText }: SearchProps) {
   const [isScroll, setIsScroll] = useState<boolean>(false);
+  const location = useLocation();
 
   function handleScroll(e: Event) {
     let position = window.pageYOffset || document.documentElement.scrollTop;
@@ -32,7 +38,12 @@ export default function Navbar() {
           <span>اپلیکیشن مدیریت مخاطبین</span>
         </div>
         <div className="search">
-          <SearchContact />
+          {location.pathname === "/contacts" && (
+            <SearchContact
+              searchText={searchText}
+              setSearchText={setSearchText}
+            />
+          )}
         </div>
       </div>
       <Separator />

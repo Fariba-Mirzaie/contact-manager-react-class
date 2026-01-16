@@ -13,6 +13,7 @@ import { Group } from "./components/Contact/contact.type";
 
 function App() {
   const [groups, setGroups] = useState<Group[]>([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -25,11 +26,14 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar />
+      <Navbar searchText={searchText} setSearchText={setSearchText} />
 
       <Routes>
         <Route path="/" element={<Navigate to="/contacts" />} />
-        <Route path="/contacts" element={<Contacts />} />
+        <Route
+          path="/contacts"
+          element={<Contacts searchText={searchText} />}
+        />
         <Route path="/contact/add" element={<AddContact groups={groups} />} />
         <Route path="/contact/view/:id" element={<ViewContact />} />
         <Route

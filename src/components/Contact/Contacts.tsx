@@ -4,17 +4,23 @@ import { useEffect, useState } from "react";
 import { getAllContacts } from "../../services/contactService";
 import { Contact } from "./contact.type";
 
-export default function Contacts() {
+export default function Contacts({ searchText }: { searchText: string }) {
   const [loading, setLoading] = useState<boolean>(false);
   const [contacts, setContacts] = useState<Contact[]>([]);
 
   useEffect(() => {
     fetchData();
-  }, []);
+    console.log("effect:", searchText);
+  }, [searchText]);
 
   async function fetchData() {
     setLoading(true);
-    setContacts(await getAllContacts());
+    let allContacts: Contact[] = await getAllContacts();
+
+    if (searchText)
+      allContacts = allContacts.filter((f) => f.name.includes(searchText));
+
+    setContacts(allContacts);
     setLoading(false);
   }
 
