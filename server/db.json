@@ -1,38 +1,14 @@
 {
   "contacts": [
     {
-      "family": "مکتب",
-      "id": "1"
-    },
-    {
-      "id": "2",
-      "name": "علی تستتتت",
-      "family": "رضااااااااااااااا",
-      "mobile": "09125555555",
-      "email": "ff@gmail.com",
+      "family": "میرزایی",
+      "id": "1",
+      "name": "فریبا",
+      "mobile": "0912444555",
+      "email": "f@gmail.com",
       "image": "test",
-      "job": "کارگر",
-      "group": "3"
-    },
-    {
-      "id": "3",
-      "name": "هما",
-      "family": "رضامندی",
-      "mobile": "09125555555",
-      "email": "ff@gmail.com",
-      "image": "test",
-      "job": "کارگر",
-      "group": "1"
-    },
-    {
-      "id": "4",
-      "name": "حسین",
-      "family": "مردانی",
-      "mobile": "09125555555",
-      "email": "ff@gmail.com",
-      "image": "test",
-      "job": "کارگر",
-      "group": "1"
+      "job": "برنامه نویس",
+      "group": "2"
     }
   ],
   "groups": [

@@ -28,7 +28,11 @@ export default function Contacts() {
           <Spinner />
         ) : contacts.length > 0 ? (
           contacts.map((contact, index) => (
-            <ContactItem key={index} contact={contact} />
+            <ContactItem
+              key={index}
+              contact={contact}
+              reFetchData={fetchData}
+            />
           ))
         ) : (
           <NotFound />

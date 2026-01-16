@@ -1,8 +1,24 @@
 import "../contact.css";
 import { Link } from "react-router-dom";
 import { Contact } from "../contact.type";
+import { deleteContact } from "../../../services/contactService";
 
-export default function ContactItem({ contact }: { contact: Contact }) {
+type ContactItemProps = {
+  contact: Contact;
+  reFetchData: () => void;
+};
+
+export default function ContactItem({
+  contact,
+  reFetchData,
+}: ContactItemProps) {
+  async function handleDelete() {
+    await deleteContact(contact.id);
+    alert("حذف با موفقیت انجام شد");
+
+    reFetchData();
+  }
+
   return (
     <div className="ContactItem">
       <div>
@@ -35,7 +51,9 @@ export default function ContactItem({ contact }: { contact: Contact }) {
         <Link to={`/contact/edit/${contact.id}`}>
           <button className="btn">ویرایش</button>
         </Link>
-        <button className="btn">حذف</button>
+        <button className="btn" onClick={handleDelete}>
+          حذف
+        </button>
       </div>
     </div>
   );
