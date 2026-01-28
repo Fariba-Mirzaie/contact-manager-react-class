@@ -1,15 +1,15 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import { addContact } from "../../../services/contactService";
 import { Contact, Group } from "../contact.type";
+import { ContactContext } from "../../../context/contactContext";
 
-type AddContactProps = {
-  groups: Group[];
-};
-
-export default function AddContact({ groups }: AddContactProps) {
+export default function AddContact() {
   const [newContact, setNewContact] = useState<Contact>({} as Contact);
   const navigate = useNavigate();
+  const { groups } = useContext(ContactContext);
+
+  console.log("add", groups);
 
   function handleChangeInfo(
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -21,7 +21,7 @@ export default function AddContact({ groups }: AddContactProps) {
     event.preventDefault();
 
     if (newContact) {
-      const response = await addContact(newContact);
+      await addContact(newContact);
       alert("ثبت با موفقیت انجام شد");
       navigate("/contacts");
     }
@@ -50,7 +50,7 @@ export default function AddContact({ groups }: AddContactProps) {
           <select name="group" onChange={handleChangeInfo}>
             <option value="">انتخاب گروه</option>
             {groups.length > 0 &&
-              groups.map((item) => (
+              groups.map((item: Group) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
                 </option>

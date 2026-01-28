@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Contact, Group } from "../contact.type";
 import { editContact, getContact } from "../../../services/contactService";
+import { ContactContext } from "../../../context/contactContext";
 
-export default function EditContact({ groups }: { groups: Group[] }) {
+export default function EditContact() {
   const { id } = useParams();
   const contactId = Number(id);
   const [newInfo, setNewInfo] = useState<Contact>({} as Contact);
   const navigate = useNavigate();
+  const { groups } = useContext(ContactContext);
 
   useEffect(() => {
     async function fetchData() {
@@ -81,7 +83,7 @@ export default function EditContact({ groups }: { groups: Group[] }) {
           >
             <option value="">انتخاب گروه</option>
             {groups.length > 0 &&
-              groups.map((item) => (
+              groups.map((item: Group) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
                 </option>

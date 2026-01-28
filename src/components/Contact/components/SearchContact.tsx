@@ -1,9 +1,9 @@
-import { SearchProps } from "../../Navbar/Navbar";
+import { useContext } from "react";
+import { ContactContext } from "../../../context/contactContext";
 
-export default function SearchContact({
-  searchText,
-  setSearchText,
-}: SearchProps) {
+export default function SearchContact() {
+  const { searchText, setSearchText } = useContext(ContactContext);
+
   return (
     <input
       type="text"

@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
 import { Spinner, ContactItem, NotFound } from "../../components";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAllContacts } from "../../services/contactService";
 import { Contact } from "./contact.type";
+import { ContactContext } from "../../context/contactContext";
 
-export default function Contacts({ searchText }: { searchText: string }) {
+export default function Contacts() {
   const [loading, setLoading] = useState<boolean>(false);
   const [contacts, setContacts] = useState<Contact[]>([]);
+  const { searchText } = useContext(ContactContext);
 
   useEffect(() => {
     fetchData();
-    console.log("effect:", searchText);
   }, [searchText]);
 
   async function fetchData() {

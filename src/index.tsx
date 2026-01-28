@@ -1,10 +1,10 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "./style.css";
+import { ContactContext } from "./context/contactContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -12,7 +12,17 @@ const root = ReactDOM.createRoot(
 root.render(
   // <React.StrictMode>
   <BrowserRouter>
-    <App />
+    <ContactContext.Provider
+      value={{
+        isLoading: false,
+        searchText: "",
+        setSearchText: (value: string) => [],
+        groups: [],
+        setGroups: (value: []) => [],
+      }}
+    >
+      <App />
+    </ContactContext.Provider>
   </BrowserRouter>
   // </React.StrictMode>
 );

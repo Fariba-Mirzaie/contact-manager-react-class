@@ -3,12 +3,7 @@ import { SearchContact, Separator } from "../../components";
 import "./navbar.css";
 import { useEffect, useState } from "react";
 
-export type SearchProps = {
-  searchText: string;
-  setSearchText: (text: string) => void;
-};
-
-export default function Navbar({ searchText, setSearchText }: SearchProps) {
+export default function Navbar() {
   const [isScroll, setIsScroll] = useState<boolean>(false);
   const location = useLocation();
 
@@ -38,12 +33,7 @@ export default function Navbar({ searchText, setSearchText }: SearchProps) {
           <span>اپلیکیشن مدیریت مخاطبین</span>
         </div>
         <div className="search">
-          {location.pathname === "/contacts" && (
-            <SearchContact
-              searchText={searchText}
-              setSearchText={setSearchText}
-            />
-          )}
+          {location.pathname === "/contacts" && <SearchContact />}
         </div>
       </div>
       <Separator />
