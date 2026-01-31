@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getContact, getGroup } from "../../../services/contactService";
+import { getContact } from "../../../services/contactService";
 import { Contact, Group } from "../contact.type";
+import { ContactContext } from "../../../context/ContactContext";
 
 export type ViewContactProps = {
   contact: Contact;
@@ -10,22 +11,26 @@ export type ViewContactProps = {
 
 export default function ViewContact() {
   const { id } = useParams();
-  const contactId = Number(id);
   const [data, setData] = useState<ViewContactProps>({
     contact: {} as Contact,
     group: {} as Group,
   });
+  const { contact, group } = data;
+  const { groups } = useContext(ContactContext);
 
   useEffect(() => {
     async function fetchData() {
-      const contactData = await getContact(contactId);
-      const contactGroupData = await getGroup(contactData.group);
-      setData({ contact: contactData, group: contactGroupData });
+      const contactData = id ? await getContact(id) : {};
+      const contactGroupData = groups.find((g) => g.id === contactData.group);
+
+      if (contactData && contactGroupData)
+        setData({ contact: contactData, group: contactGroupData });
+
+      console.log("c", contactData);
+      console.log("g", contactGroupData);
     }
     fetchData();
   }, []);
-
-  const { contact, group } = data;
 
   return data ? (
     <div className="ContactItem">

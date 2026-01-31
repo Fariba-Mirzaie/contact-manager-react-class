@@ -7,7 +7,7 @@ async function getAllContacts() {
   const response = await fetch(`${BASE_URL}/contacts`);
   return await response.json();
 }
-async function getContact(id: number) {
+async function getContact(id: string) {
   const response = await fetch(`${BASE_URL}/contacts/${id}`);
   return await response.json();
 }
@@ -19,14 +19,14 @@ async function addContact(contact: Contact) {
 
   return response;
 }
-async function editContact(id: number, contact: Contact) {
+async function editContact(id: string, contact: Contact) {
   const response = await fetch(`${BASE_URL}/contacts/${id}`, {
     method: "PUT",
     body: JSON.stringify(contact),
   });
   return response.json();
 }
-async function deleteContact(id: number) {
+async function deleteContact(id: string) {
   const response = await fetch(`${BASE_URL}/contacts/${id}`, {
     method: "DELETE",
   });

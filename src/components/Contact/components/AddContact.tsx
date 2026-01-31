@@ -2,17 +2,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { addContact } from "../../../services/contactService";
 import { Contact, Group } from "../contact.type";
-import { ContactContext } from "../../../context/contactContext";
+import { ContactContext } from "../../../context/ContactContext";
 
 export default function AddContact() {
   const [newContact, setNewContact] = useState<Contact>({} as Contact);
   const navigate = useNavigate();
   const { groups } = useContext(ContactContext);
 
-  console.log("add", groups);
-
   function handleChangeInfo(
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) {
     setNewContact({ ...newContact, [event.target.name]: event.target.value });
   }

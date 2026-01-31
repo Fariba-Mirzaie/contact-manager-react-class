@@ -2,18 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Contact, Group } from "../contact.type";
 import { editContact, getContact } from "../../../services/contactService";
-import { ContactContext } from "../../../context/contactContext";
+import { ContactContext } from "../../../context/ContactContext";
 
 export default function EditContact() {
   const { id } = useParams();
-  const contactId = Number(id);
   const [newInfo, setNewInfo] = useState<Contact>({} as Contact);
   const navigate = useNavigate();
   const { groups } = useContext(ContactContext);
 
   useEffect(() => {
     async function fetchData() {
-      const contactData = await getContact(contactId);
+      const contactData = id ? await getContact(id) : {};
       setNewInfo(contactData);
     }
 
@@ -21,7 +20,7 @@ export default function EditContact() {
   }, []);
 
   function handleChangeInfo(
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) {
     setNewInfo({ ...newInfo, [event.target.name]: event.target.value });
   }
@@ -29,7 +28,7 @@ export default function EditContact() {
   async function updateContact(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    await editContact(contactId, newInfo);
+    if (id) await editContact(id, newInfo);
     alert("ویرایش با موفقیت انجام شد");
     navigate("/contacts");
   }

@@ -9,10 +9,10 @@ import { useContext, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { getAllGroups } from "./services/contactService";
 import "./App.css";
-import { ContactContext } from "./context/contactContext";
+import { ContactContext } from "./context/ContactContext";
 
 function App() {
-  const { groups, setGroups } = useContext(ContactContext);
+  const { setGroups } = useContext(ContactContext);
 
   useEffect(() => {
     fetchData();
@@ -21,8 +21,6 @@ function App() {
   async function fetchData() {
     const allGroups = await getAllGroups();
     setGroups(allGroups);
-
-    console.log("ggg", groups);
   }
 
   return (

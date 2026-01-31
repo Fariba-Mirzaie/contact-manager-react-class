@@ -8,17 +8,7 @@
       "email": "f@gmail.com",
       "image": "test",
       "job": "برنامه نویس",
-      "group": "2"
-    },
-    {
-      "family": "میرزایی",
-      "id": "2",
-      "name": "رضا",
-      "mobile": "09124444444",
-      "email": "f@gmail.com",
-      "image": "test",
-      "job": "برنامه نویس",
-      "group": "2"
+      "group": "1"
     },
     {
       "family": "گل کار",
@@ -29,6 +19,24 @@
       "image": "test",
       "job": "برنامه نویس",
       "group": "2"
+    },
+    {
+      "id": "53f5",
+      "name": "علی تستتتت",
+      "family": "رضااااااااااااااا",
+      "mobile": "09127392603",
+      "email": "ff@gmail.com",
+      "group": "3"
+    },
+    {
+      "id": "6e6c",
+      "name": "سارا ",
+      "family": "حسینی ",
+      "mobile": "09124444444",
+      "email": "sara@gmail.com",
+      "image": "tttt",
+      "job": "ارایشگر",
+      "group": "3"
     }
   ],
   "groups": [

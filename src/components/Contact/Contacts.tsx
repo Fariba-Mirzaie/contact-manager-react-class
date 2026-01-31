@@ -3,12 +3,11 @@ import { Spinner, ContactItem, NotFound } from "../../components";
 import { useContext, useEffect, useState } from "react";
 import { getAllContacts } from "../../services/contactService";
 import { Contact } from "./contact.type";
-import { ContactContext } from "../../context/contactContext";
+import { ContactContext } from "../../context/ContactContext";
 
 export default function Contacts() {
-  const [loading, setLoading] = useState<boolean>(false);
   const [contacts, setContacts] = useState<Contact[]>([]);
-  const { searchText } = useContext(ContactContext);
+  const { searchText, loading, setLoading } = useContext(ContactContext);
 
   useEffect(() => {
     fetchData();
@@ -19,7 +18,9 @@ export default function Contacts() {
     let allContacts: Contact[] = await getAllContacts();
 
     if (searchText)
-      allContacts = allContacts.filter((f) => f.name.includes(searchText));
+      allContacts = allContacts.filter(
+        (f) => f.name.includes(searchText) || f.family.includes(searchText),
+      );
 
     setContacts(allContacts);
     setLoading(false);

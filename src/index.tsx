@@ -4,27 +4,20 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import "./style.css";
-import { ContactContext } from "./context/contactContext";
+import React from "react";
+import ContactProvider from "./context/ContactProvider";
 
 const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
+  document.getElementById("root") as HTMLElement,
 );
 root.render(
-  // <React.StrictMode>
-  <BrowserRouter>
-    <ContactContext.Provider
-      value={{
-        isLoading: false,
-        searchText: "",
-        setSearchText: (value: string) => [],
-        groups: [],
-        setGroups: (value: []) => [],
-      }}
-    >
-      <App />
-    </ContactContext.Provider>
-  </BrowserRouter>
-  // </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <ContactProvider>
+        <App />
+      </ContactProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

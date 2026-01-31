@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ContactContext } from "../../../context/contactContext";
+import { ContactContext } from "../../../context/ContactContext";
 
 export default function SearchContact() {
   const { searchText, setSearchText } = useContext(ContactContext);
