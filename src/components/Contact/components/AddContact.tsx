@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useLayoutEffect, useRef, useState } from "react";
 import { addContact } from "../../../services/contactService";
 import { Contact, Group } from "../contact.type";
 import { ContactContext } from "../../../context/ContactContext";
@@ -8,6 +8,11 @@ export default function AddContact() {
   const [newContact, setNewContact] = useState<Contact>({} as Contact);
   const navigate = useNavigate();
   const { groups } = useContext(ContactContext);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useLayoutEffect(() => {
+    if (inputRef.current) inputRef.current.focus();
+  });
 
   function handleChangeInfo(
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -30,7 +35,12 @@ export default function AddContact() {
       <h2 className="title">ایجاد مخاطب جدید</h2>
       <form onSubmit={createContact}>
         <div className="add-form">
-          <input name="name" placeholder="نام" onChange={handleChangeInfo} />
+          <input
+            name="name"
+            placeholder="نام"
+            onChange={handleChangeInfo}
+            ref={inputRef}
+          />
           <input
             name="family"
             placeholder="نام خانوادگی"
